@@ -1,97 +1,67 @@
-<?php
-session_start();
-
-if (!isset($_SESSION['username'])) {
-    header("Location: login.html");
-    exit();
-}
-?>
-
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page d'accueil - Médicaments</title>
-    <p>Bonjour, <?php echo htmlspecialchars($_SESSION['username']); ?>!</p>
+    <title>Tableau de Médicaments</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
+        table {
+            width: 100%;
+            border-collapse: collapse;
         }
-        .navbar {
-            background-color: #4CAF50;
-            overflow: hidden;
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
         }
-        .navbar a {
-            float: left;
-            display: block;
-            color: white;
-            text-align: center;
-            padding: 14px 20px;
-            text-decoration: none;
-        }
-        .navbar a:hover {
-            background-color: #ddd;
-            color: black;
-        }
-        .container {
-            padding: 20px;
-        }
-        .product-card {
-            background-color: white;
-            margin: 20px 0;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .product-card h2 {
-            margin: 0 0 10px;
-        }
-        .product-card p {
-            margin: 0 0 20px;
-        }
-        .product-card .btn {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-        .product-card .btn:hover {
-            background-color: #45a049;
+        th {
+            background-color: #f2f2f2;
         }
     </style>
 </head>
 <body>
-
-<div class="navbar">
-    <a href="accueil.php">Accueil</a>
-    <a href="commandes.php">Produits</a>
-    <a href="deconnexion.php">Déconnexion</a>
-</div>
-
-<div class="container">
-    <h1>Voici les médicaments</h1>
-
-    <div class="product-card">
-        <h2>Médicament A</h2>
-        <p>Description du médicament A. Utilisé pour traiter ...</p>
-        <a href="#" class="btn">Acheter maintenant</a>
-    </div>
-
-    <div class="product-card">
-        <h2>Médicament B</h2>
-        <p>Description du médicament B. Utilisé pour traiter ...</p>
-        <a href="#" class="btn">Acheter maintenant</a>
-    </div>
-
-
-</div>
-
+    <h2>Liste des Médicaments</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>Prix</th>
+                <th>Stock</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Paracétamol</td>
+                <td>2.50 €</td>
+                <td>150</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Ibuprofène</td>
+                <td>3.00 €</td>
+                <td>120</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Aspirine</td>
+                <td>1.50 €</td>
+                <td>200</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Amoxicilline</td>
+                <td>4.00 €</td>
+                <td>80</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Vitamine C</td>
+                <td>1.20 €</td>
+                <td>250</td>
+            </tr>
+        </tbody>
+    </table>
 </body>
 </html>
