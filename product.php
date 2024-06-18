@@ -1,20 +1,42 @@
 <?php
 session_start();
- 
+
 if (!isset($_SESSION['username'])) {
     header("Location: login.html");
     exit();
 }
+
+class Medicament {
+    public $nom;
+    public $dose;
+    public $forme;
+    public $fabricant;
+    public $date_expiration;
+
+    public function __construct($nom, $dose, $forme, $fabricant, $date_expiration) {
+        $this->nom = $nom;
+        $this->dose = $dose;
+        $this->forme = $forme;
+        $this->fabricant = $fabricant;
+        $this->date_expiration = $date_expiration;
+    }
+}
+
+$medicaments = [
+    new Medicament("Paracétamol", "500mg", "Comprimé", "Sanofi", "2024-12-31"),
+    new Medicament("Ibuprofène", "200mg", "Capsule", "Pfizer", "2025-06-30"),
+    new Medicament("Amoxicilline", "250mg", "Sirop", "GSK", "2023-09-15"),
+    new Medicament("Aspirine", "100mg", "Comprimé", "Bayer", "2024-05-20"),
+    new Medicament("Oméprazole", "20mg", "Gélule", "AstraZeneca", "2025-11-10"),
+];
 ?>
- 
- 
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page d'accueil - Médicaments</title>
-    <p>Bonjour, <?php echo htmlspecialchars($_SESSION['username']); ?>!</p>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -68,30 +90,33 @@ if (!isset($_SESSION['username'])) {
     </style>
 </head>
 <body>
- 
+
 <div class="navbar">
     <a href="accueil.php">Accueil</a>
     <a href="commandes.php">Produits</a>
     <a href="deconnexion.php">Déconnexion</a>
 </div>
- 
+
 <div class="container">
-    <h1>Voici les médicaments</h1>
- 
+    <h1>Bonjour, <?php echo htmlspecialchars($_SESSION['username']); ?>! Voici les médicaments</h1>
+
+    <?php foreach ($medicaments as $medicament): ?>
     <div class="product-card">
-        <h2>Amoxiciline</h2>
-        <p>Description du médicament A. Utilisé pour traiter ...</p>
+        <!-- Affichage du nom du médicament -->
+        <h2><?php echo htmlspecialchars($medicament->nom); ?></h2>
+        <!-- Affichage de la dose du médicament -->
+        <p>Dose: <?php echo htmlspecialchars($medicament->dose); ?></p>
+        <!-- Affichage de la forme du médicament (par exemple, comprimé, capsule, etc.) -->
+        <p>Forme: <?php echo htmlspecialchars($medicament->forme); ?></p>
+        <!-- Affichage du fabricant du médicament -->
+        <p>Fabricant: <?php echo htmlspecialchars($medicament->fabricant); ?></p>
+        <!-- Affichage de la date d'expiration du médicament -->
+        <p>Date d'expiration: <?php echo htmlspecialchars($medicament->date_expiration); ?></p>
+        <!-- Bouton pour acheter le médicament (actuellement sans lien actif) -->
         <a href="#" class="btn">Acheter maintenant</a>
     </div>
- 
-    <div class="product-card">
-        <h2>Médicament B</h2>
-        <p>Description du médicament B. Utilisé pour traiter ...</p>
-        <a href="#" class="btn">Acheter maintenant</a>
-    </div>
- 
- 
+    <?php endforeach; ?>
 </div>
- 
+
 </body>
 </html>

@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Méditech</title>
+    <title>PharmaTech</title>
     <link rel="stylesheet" type="text/css" href="slide navbar style.css">
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
+<img src="img/pharmatech_logo.png" />
 <div class="main">
+    
     <input type="checkbox" id="chk" aria-hidden="true">
 
     <div class="signup">
@@ -28,7 +30,7 @@
         </form>
         <?php
         if (isset($error_message)) {
-            echo '<p style="color:red;">' . $error_message . '</p>';
+            echo '<p style="color:green;">' . $error_message . '</p>';
         }
         ?>
     </div>
@@ -44,13 +46,13 @@
         align-items: center;
         min-height: 100vh;
         font-family: 'Jost', sans-serif;
-        background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+        background: linear-gradient(to bottom, #84FB44, #5ea63f, #4CAF50);
     }
 
     .main {
         width: 350px;
         height: 550px;
-        background: red;
+        background: green;
         overflow: hidden;
         background: url("https://doc-08-2c-docs.googleusercontent.com/docs/securesc/68c90smiglihng9534mvqmq1946dmis5/fo0picsp1nhiucmc0l25s29respgpr4j/1631524275000/03522360960922298374/03522360960922298374/1Sx0jhdpEpnNIydS4rnN4kHSJtU1EyWka?e=view&authuser=0&nonce=gcrocepgbb17m&user=03522360960922298374&hash=tfhgbs86ka6divo3llbvp93mg4csvb38") no-repeat center/ cover;
         border-radius: 10px;
@@ -98,7 +100,7 @@
         justify-content: center;
         display: block;
         color: #fff;
-        background: #573b8a;
+        background: #2F8900;
         font-size: 1em;
         font-weight: bold;
         margin-top: 30px;
