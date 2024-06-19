@@ -5,8 +5,6 @@ if (!isset($_SESSION['username'])) {
     header("Location: login.html");
     exit();
 }
-
-// Inclure le fichier de configuration pour établir la connexion à la base de données
 include 'config.php';
 
 class Medicament {
@@ -68,7 +66,7 @@ try {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page d'accueil - Médicaments</title>
+    <title>Liste des Produits</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -95,31 +93,44 @@ try {
         .container {
             padding: 20px;
         }
-        .product-card {
+        .product {
             background-color: white;
             margin: 20px 0;
             padding: 20px;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        .product-card h2 {
+        .product h2 {
             margin: 0 0 10px;
         }
-        .product-card p {
-            margin: 0 0 20px;
+        .product p {
+            margin: 0 0 10px;
         }
-        .product-card .btn {
+        .product .btn-group {
+            display: flex;
+            justify-content: space-between;
+        }
+        .product .btn {
             background-color: #4CAF50;
             color: white;
             padding: 10px 20px;
             text-decoration: none;
             border-radius: 5px;
             transition: background-color 0.3s;
+            flex-grow: 1;
+            text-align: center;
+            margin-right: 10px;
         }
-        .product-card .btn:hover {
+        .product .btn-details {
+            background-color: #4CAF50;
+        }
+        .product .btn-buy {
+            background-color: #008CBA;
+        }
+        .product .btn:hover {
             background-color: #45a049;
         }
-        .product-card img {
+        .product img {
             max-width: 100px;
             max-height: 100px;
             display: block;
@@ -136,10 +147,10 @@ try {
 </div>
 
 <div class="container">
-    <h1>Bonjour, <?php echo htmlspecialchars($_SESSION['username']); ?>! Voici les médicaments disponibles </h1>
+    <h1>Liste des Produits</h1>
 
     <?php foreach ($medicaments as $medicament): ?>
-    <div class="product-card">
+    <div class="product">
         <img src="<?php echo htmlspecialchars($medicament->img); ?>" alt="Image du médicament">
         <h2>Référence: <?php echo htmlspecialchars($medicament->reference); ?></h2>
         <p>Prix: <?php echo htmlspecialchars($medicament->prix); ?> €</p>
@@ -148,7 +159,15 @@ try {
         <p>Description: <?php echo htmlspecialchars($medicament->description); ?></p>
         <p>Fabriquant: <?php echo htmlspecialchars($medicament->fabriquant); ?></p>
         <p>Type: <?php echo htmlspecialchars($medicament->type); ?></p>
-        <a href="#" class="btn">Acheter maintenant</a>
+
+        <!-- Boutons -->
+        <div class="btn-group">
+            <!-- Bouton Acheter -->
+            <a href="#" class="btn btn-buy">Acheter maintenant</a>
+            
+            <!-- Bouton Détails -->
+            <a href="details.php?id=<?php echo htmlspecialchars($medicament->id); ?>" class="btn btn-details">Détails</a>
+        </div>
     </div>
     <?php endforeach; ?>
 </div>
