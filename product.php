@@ -94,11 +94,11 @@ $medicaments = [
 <div class="navbar">
     <a href="accueil.php">Accueil</a>
     <a href="commandes.php">Produits</a>
-    <a href="deconnexion.php">Déconnexion</a>
+    <a href="logout.php">Déconnexion</a>
 </div>
 
 <div class="container">
-    <h1>Bonjour, <?php echo htmlspecialchars($_SESSION['username']); ?>! Voici les médicaments</h1>
+    <h1>Bonjour, <?php echo htmlspecialchars($_SESSION['username']); ?>! Voici les médicaments disponibles </h1>
 
     <?php foreach ($medicaments as $medicament): ?>
     <div class="product-card">

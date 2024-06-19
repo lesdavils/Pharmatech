@@ -1,3 +1,20 @@
+<?php
+session_start();
+
+if (isset($_SESSION['error_message'])) {
+    $error_message = $_SESSION['error_message'];
+    unset($_SESSION['error_message']);
+} else {
+    $error_message = null;
+}
+
+if (isset($_SESSION['logout_message'])) {
+    $logout_message = $_SESSION['logout_message'];
+    unset($_SESSION['logout_message']);
+} else {
+    $logout_message = null;
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,33 +23,36 @@
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-<img src="img/pharmatech_logo.png" />
-<div class="main">
-    
-    <input type="checkbox" id="chk" aria-hidden="true">
+<div class="container">
+    <div class="main">
+        <input type="checkbox" id="chk" aria-hidden="true">
 
-    <div class="signup">
-        <form>
-            <label for="chk" aria-hidden="true">Créer votre espace</label>
-            <input type="text" name="txt" placeholder="Nom prénom" required="">
-            <input type="email" name="email" placeholder="Email" required="">
-            <input type="password" name="pswd" placeholder="Mot de passe" required="">
-            <button>S'inscrire</button>
-        </form>
-    </div>
+        <div class="signup">
+            <form>
+                <label for="chk" aria-hidden="true">Créer votre espace</label>
+                <input type="text" name="txt" placeholder="Nom prénom" required="">
+                <input type="email" name="email" placeholder="Email" required="">
+                <input type="password" name="pswd" placeholder="Mot de passe" required="">
+                <button>S'inscrire</button>
+            </form>
+        </div>
 
-    <div class="login">
-        <form method="post" action="login.php">
-            <label for="chk" aria-hidden="true">Connexion</label>
-            <input type="text" name="email" placeholder="Email" required="">
-            <input type="password" name="password" placeholder="Mot de passe" required="">
-            <button type="submit">Connectez-vous</button>
-        </form>
-        <?php
-        if (isset($error_message)) {
-            echo '<p style="color:green;">' . $error_message . '</p>';
-        }
-        ?>
+        <div class="login">
+            <form method="post" action="login.php">
+                <label for="chk" aria-hidden="true">Connexion</label>
+                <input type="text" name="email" placeholder="Email" required="">
+                <input type="password" name="password" placeholder="Mot de passe" required="">
+                <button type="submit">Connectez-vous</button>
+            </form>
+            <?php
+            if ($error_message) {
+                echo '<p class="error-message">' . $error_message . '</p>';
+            }
+            if ($logout_message) {
+                echo '<p class="logout-message">' . $logout_message . '</p>';
+            }
+            ?>
+        </div>
     </div>
 </div>
 </body>
@@ -47,6 +67,12 @@
         min-height: 100vh;
         font-family: 'Jost', sans-serif;
         background: linear-gradient(to bottom, #84FB44, #5ea63f, #4CAF50);
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .main {
@@ -140,5 +166,15 @@
         transform: scale(.6);
     }
 
+    .error-message {
+        color: red;
+        text-align: center;
+        margin-top: 20px;
+    }
 
+    .logout-message {
+        color: green;
+        text-align: center;
+        margin-top: 20px;
+    }
 </style>

@@ -10,7 +10,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header("Location: accueil.php");
         exit();
     } else {
-        $error_message = "Invalid login credentials.";
+        $_SESSION['error_message'] = "Le nom d'utilisateur ou le mot de passe est incorrect.";
+        header("Location: index.php");
+        exit();
     }
 }
 ?>
