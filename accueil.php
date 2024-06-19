@@ -5,6 +5,8 @@ if (!isset($_SESSION['username'])) {
     header("Location: login.html");
     exit();
 }
+include 'config.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -84,9 +86,7 @@ if (!isset($_SESSION['username'])) {
 
 <div class="container">
     <h1>Bienvenue, <?php echo htmlspecialchars($_SESSION['username']); ?>!</h1>
-    <p>Découvrez nos produits de haute qualité et commandez facilement en ligne.</p>
     <!-- Ajoutez plus de cartes produits selon vos besoins -->
 </div>
-
 </body>
 </html>

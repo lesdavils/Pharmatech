@@ -6,29 +6,61 @@ if (!isset($_SESSION['username'])) {
     exit();
 }
 
-class Medicament {
-    public $nom;
-    public $dose;
-    public $forme;
-    public $fabricant;
-    public $date_expiration;
+// Inclure le fichier de configuration pour établir la connexion à la base de données
+include 'config.php';
 
-    public function __construct($nom, $dose, $forme, $fabricant, $date_expiration) {
-        $this->nom = $nom;
-        $this->dose = $dose;
-        $this->forme = $forme;
-        $this->fabricant = $fabricant;
-        $this->date_expiration = $date_expiration;
+class Medicament {
+    public $id;
+    public $reference;
+    public $prix;
+    public $derniere_modification;
+    public $quantite;
+    public $description;
+    public $fabriquant;
+    public $img;
+    public $type;
+
+    public function __construct($id, $reference, $prix, $derniere_modification, $quantite, $description, $fabriquant, $img, $type) {
+        $this->id = $id;
+        $this->reference = $reference;
+        $this->prix = $prix;
+        $this->derniere_modification = $derniere_modification;
+        $this->quantite = $quantite;
+        $this->description = $description;
+        $this->fabriquant = $fabriquant;
+        $this->img = $img;
+        $this->type = $type;
     }
 }
 
-$medicaments = [
-    new Medicament("Paracétamol", "500mg", "Comprimé", "Sanofi", "2024-12-31"),
-    new Medicament("Ibuprofène", "200mg", "Capsule", "Pfizer", "2025-06-30"),
-    new Medicament("Amoxicilline", "250mg", "Sirop", "GSK", "2023-09-15"),
-    new Medicament("Aspirine", "100mg", "Comprimé", "Bayer", "2024-05-20"),
-    new Medicament("Oméprazole", "20mg", "Gélule", "AstraZeneca", "2025-11-10"),
-];
+try {
+    // Requête SQL pour sélectionner tous les médicaments
+    $sql = "SELECT * FROM medicaments";
+    $stmt = $pdo->query($sql);
+
+    // Vérifie si des résultats ont été retournés
+    if ($stmt->rowCount() > 0) {
+        // Récupère tous les résultats dans un tableau d'objets Medicament
+        $medicaments = [];
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $medicaments[] = new Medicament(
+                $row['id'],
+                $row['reference'],
+                $row['prix'],
+                $row['derniere_modification'],
+                $row['quantite'],
+                $row['description'],
+                $row['fabriquant'],
+                $row['img'],
+                $row['type']
+            );
+        }
+    } else {
+        $medicaments = [];
+    }
+} catch (PDOException $e) {
+    echo "Erreur : " . $e->getMessage();
+}
 ?>
 
 <!DOCTYPE html>
@@ -87,13 +119,19 @@ $medicaments = [
         .product-card .btn:hover {
             background-color: #45a049;
         }
+        .product-card img {
+            max-width: 100px;
+            max-height: 100px;
+            display: block;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
 
 <div class="navbar">
     <a href="accueil.php">Accueil</a>
-    <a href="commandes.php">Produits</a>
+    <a href="product.php">Produits</a>
     <a href="logout.php">Déconnexion</a>
 </div>
 
@@ -102,17 +140,14 @@ $medicaments = [
 
     <?php foreach ($medicaments as $medicament): ?>
     <div class="product-card">
-        <!-- Affichage du nom du médicament -->
-        <h2><?php echo htmlspecialchars($medicament->nom); ?></h2>
-        <!-- Affichage de la dose du médicament -->
-        <p>Dose: <?php echo htmlspecialchars($medicament->dose); ?></p>
-        <!-- Affichage de la forme du médicament (par exemple, comprimé, capsule, etc.) -->
-        <p>Forme: <?php echo htmlspecialchars($medicament->forme); ?></p>
-        <!-- Affichage du fabricant du médicament -->
-        <p>Fabricant: <?php echo htmlspecialchars($medicament->fabricant); ?></p>
-        <!-- Affichage de la date d'expiration du médicament -->
-        <p>Date d'expiration: <?php echo htmlspecialchars($medicament->date_expiration); ?></p>
-        <!-- Bouton pour acheter le médicament (actuellement sans lien actif) -->
+        <img src="<?php echo htmlspecialchars($medicament->img); ?>" alt="Image du médicament">
+        <h2>Référence: <?php echo htmlspecialchars($medicament->reference); ?></h2>
+        <p>Prix: <?php echo htmlspecialchars($medicament->prix); ?> €</p>
+        <p>Dernière modification: <?php echo htmlspecialchars($medicament->derniere_modification); ?></p>
+        <p>Quantité: <?php echo htmlspecialchars($medicament->quantite); ?></p>
+        <p>Description: <?php echo htmlspecialchars($medicament->description); ?></p>
+        <p>Fabriquant: <?php echo htmlspecialchars($medicament->fabriquant); ?></p>
+        <p>Type: <?php echo htmlspecialchars($medicament->type); ?></p>
         <a href="#" class="btn">Acheter maintenant</a>
     </div>
     <?php endforeach; ?>
