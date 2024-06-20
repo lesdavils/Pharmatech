@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # 💊 Pharmatech 💊
 ## Lancement du projet 
 Pour la semaine du ``17/06/2024 au 20/06/2024``, l'idée principale est de créer un outil de gestion de médicaments avec une page de login et une page de produits qui récupère des données à partir d'une base SQL hébergée localement. Pour commencer, nous avons cherché à trouver un nom pour le site web ("Pharmatech 💊"), puis nous avons installé ``XAMPP`` sur notre PC "local" : 
@@ -65,9 +64,6 @@ On à créé cette strucutre avec differentes specificités tels que l'id (qui i
 
 # Explication du code
 
-=======
-# Pharmatech 
->>>>>>> 7f938d0633137a35c54c8bdcb30b79ed84581624
 ## L'index.php
 ### Partie PHP
 
@@ -145,13 +141,9 @@ if ($logout_message) {
 
 
 
-<<<<<<< HEAD
 ### Ensuite il ya les balises HTML et les règles CSS 
 
 > Nous ne commenterons pas le code HTML et CSS car ce n'est pas le sujet principal de ce projet.
-=======
-### Ensuite il ya les balises HTML et les règles CSS
->>>>>>> 7f938d0633137a35c54c8bdcb30b79ed84581624
 
 Comme par exemple 
 ```css
@@ -168,13 +160,9 @@ Comme par exemple
         transform: scale(.6);
     }
 ```
-<<<<<<< HEAD
 #### Qui définit des règles CSS visuelles pour la partie Login
 
 
-=======
-#### Qui définit des règles pour la partie Login
->>>>>>> 7f938d0633137a35c54c8bdcb30b79ed84581624
 
 ## Le login.php
 
@@ -184,20 +172,12 @@ Comme par exemple
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $password = $_POST['password'];
-<<<<<<< HEAD
     if ($email == "admin@pharmatech.com" && $password == "admin") {
-=======
-    if ($email == "admin" && $password == "admin") {
->>>>>>> 7f938d0633137a35c54c8bdcb30b79ed84581624
         $_SESSION['username'] = "admin";
         header("Location: accueil.php");
         exit();
     } else {
-<<<<<<< HEAD
         $_SESSION['error_message'] = "L'email ou le mot de passe est incorrect.";
-=======
-        $_SESSION['error_message'] = "Le nom d'utilisateur ou le mot de passe est incorrect.";
->>>>>>> 7f938d0633137a35c54c8bdcb30b79ed84581624
         header("Location: index.php");
         exit();
     }
@@ -227,11 +207,7 @@ if ($email == "admin" && $password == "admin")
 ```php
 $_SESSION['username'] = "admin"; :
 ```
-<<<<<<< HEAD
 Alors le nom d'utilisateur est stocké afin de permettre de garder l'utilisateur connecté. (il n'y a pas de sécurité c'est en clair dans le code...)   
-=======
-Alors le nom d'utilisateur est stocké afin de permettre de garder l'utilisateur connecté.    
->>>>>>> 7f938d0633137a35c54c8bdcb30b79ed84581624
 
 On est alors redirigé vers l'acceuil du site 
 ```php
