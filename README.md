@@ -104,7 +104,9 @@ if (isset($_SESSION['error_message'])) {
     $error_message = null;
 }
 ```
-Si aucun message d'erreur est stocké dans la session la variable : 
+Si aucun message d'erreur est stocké dans la session la variable :
+
+``isset`` C'est pour voir si une fonction est définie
 
 ```php
 $error_message
