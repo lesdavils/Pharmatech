@@ -39,16 +39,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Mettre à jour les données dans la base de données
     try {
-        $sql = "UPDATE medicaments SET reference = :reference, prix = :prix, quantite = :quantite, description = :description, fabriquant = :fabriquant, type = :type WHERE id = :id";
+        $sql = "UPDATE `medicaments` SET `id`= :id,`reference`= :reference,`prix`= :prix,`quantite`= :quantite,`description`= :description,`fabriquant`= :fabriquant,`type`= :type WHERE id = :id";
         $stmt = $pdo->prepare($sql);
-        $stmt->bindParam(':reference', $reference, PDO::PARAM_STR);
-        $stmt->bindParam(':prix', $prix, PDO::PARAM_INT);
-        $stmt->bindParam(':quantite', $quantite, PDO::PARAM_INT);
-        $stmt->bindParam(':description', $description, PDO::PARAM_STR);
-        $stmt->bindParam(':fabriquant', $fabriquant, PDO::PARAM_STR);
-        $stmt->bindParam(':type', $type, PDO::PARAM_STR);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        $stmt->execute();
+        $stmt->execute(['id' => $id, 'reference' => $reference, 'prix' => $prix, 'quantite' => $quantite, 'description' => $description, 'fabriquant' => $fabriquant, 'type' => $type]);
 
         // Rediriger vers la page de détails après la mise à jour
         header("Location: details.php?id=$id");
