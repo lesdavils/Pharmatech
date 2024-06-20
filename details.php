@@ -15,8 +15,7 @@ try {
     // Requête SQL pour récupérer les détails du médicament spécifié par l'ID
     $sql = "SELECT * FROM medicaments WHERE id = :id";
     $stmt = $pdo->prepare($sql);
-    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-    $stmt->execute();
+    $stmt->execute(['id' => $id]);
 
     if ($stmt->rowCount() == 1) {
         $medicament = $stmt->fetch(PDO::FETCH_ASSOC);
