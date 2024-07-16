@@ -291,3 +291,11 @@ Ouvrez les ports nécessaires pour SSH, HTTP, et HTTPS (22, 80, 443) :
 
 ![puttyconfig](img/puttyconfig.png)
 
+
+# 16/07/2024
+
+# Mise en place du MYSQL Server
+
+
+# Introduction
+Ce readme explique comment installer le mysql server sous linux, configurer des users, creation de base de données.
