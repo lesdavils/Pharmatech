@@ -251,10 +251,6 @@ Qui arrête l'exécution du script
 
 # Mise en réseaux du site PHP
 
-
-## Introduction
-Ce readme fournit des instructions pour configurer un compte Oracle Cloud Infrastructure (OCI), créer une machine virtuelle (VM) avec une image Linux Ubuntu, configurer l'accès SSH, et installer Apache et PHP sur la VM.
-
 ## Création d'un Compte OCI
 Allez sur le site Oracle Cloud Infrastructure et créez un compte.
 Suivez les instructions à l'écran pour configurer votre compte.
@@ -287,10 +283,68 @@ Ouvrez les ports nécessaires pour SSH, HTTP, et HTTPS (22, 80, 443) :
    - **Description** : Autoriser les connexions HTTP
 
 
+
+
+
+
 ## Connexion en SSH avec Putty
 
 ![puttyconfig](img/puttyconfig.png)
 
+Pour ce connecter en SSH a la machine via un PC Windows on utilise PuTTY. 
+
+Pour cela il faut rentrer dans le champ HostName le nom d'hote ou l'ip du serveur. Ensuite le port de base SSH est le 22. Il ne faut pas oublier d'aller dans l'arborescence Connexion/SSH/Auth/Credentials et mettre le fichier converti de la private key.
+
+Ensuite on clique sur OPEN et la séssion démarre. 
+
+## Installation et Configuration d'Apache
+
+### Installez Apache :
+   ```
+   sudo apt update
+   sudo apt -y install apache2
+```
+
+### Démarrez Apache :
+```
+sudo systemctl restart apache2
+```
+
+### Activation du Trafic ``HTTP``
+
+#### Le pare-feu Ubuntu est désactivé par défaut. Pour autoriser le trafic HTTP (port 80), on exécute cette commande :
+
+```
+sudo iptables -I INPUT 6 -m state --state NEW -p tcp --dport 80 -j ACCEPT
+sudo netfilter-persistent save
+```
+
+### Installez PHP et le module PHP pour Apache :
+
+```
+sudo apt -y install php libapache2-mod-php
+```
+
+### Vérifiez l'installation de PHP :
+
+```
+php -v
+```
+*(Voir la version installée)*
+
+### Redémarrez Apache :
+
+```
+sudo systemctl restart apache2
+```
+
+<br>
+<br>
+<br>
+
+# Git/Github
+
+![puttyconfig](img/git_and_github_logo.png)
 
 # 16/07/2024
 
