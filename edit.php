@@ -54,8 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
         $sql = "SELECT * FROM medicaments WHERE id = :id";
         $stmt = $pdo->prepare($sql);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        $stmt->execute();
+        $stmt->execute(['id' => $id]);
 
         if ($stmt->rowCount() == 1) {
             $medicament = $stmt->fetch(PDO::FETCH_ASSOC);
