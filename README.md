@@ -244,6 +244,50 @@ exit();
 ```
 Qui arrête l'exécution du script
 
+<br>
+<br>
+
+# 15/07/2024
+
+# Mise en réseaux du site PHP
 
 
+## Introduction
+Ce readme fournit des instructions pour configurer un compte Oracle Cloud Infrastructure (OCI), créer une machine virtuelle (VM) avec une image Linux Ubuntu, configurer l'accès SSH, et installer Apache et PHP sur la VM.
+
+## Création d'un Compte OCI
+Allez sur le site Oracle Cloud Infrastructure et créez un compte.
+Suivez les instructions à l'écran pour configurer votre compte.
+Il faut ajouter une carte bancaire pour un empreinte mais le service est toalement gratuit. 
+
+## Configuration d'une Machine Virtuelle (VM)
+Créez une nouvelle instance de VM en utilisant l'image suivante :
+   - **Image** : Canonical-Ubuntu-22.04-2024.05.31-0
+   - **Architecture** : ARM
+   
+💥 Il ne faut surtout pas oublier de télécharger les clefs privé et publiques du la VM. 💥 
+
+## Configuration de l'Accès SSH
+Téléchargez les clés SSH (publique et privée).
+Convertissez la clé privée en utilisant PuTTYgen pour l'accès SSH avec PuTTY :
+   - Ouvrez PuTTYgen.
+   - Chargez la clé privée téléchargée.
+   - Sauvegardez la clé privée au format de PuTTY.
+
+![puttygen](img/puttygen.png)
+
+## Configuration du Réseau
+Ouvrez les ports nécessaires pour SSH, HTTP, et HTTPS (22, 80, 443) :
+   - **Stateless** : Coché
+   - **Source Type** : CIDR
+   - **Source CIDR** : 0.0.0.0/0
+   - **IP Protocol** : TCP
+   - **Source port range** : (laisser vide)
+   - **Destination Port Range** : Entrez le numéro du port à ouvrir
+   - **Description** : Autoriser les connexions HTTP
+
+
+## Connexion en SSH avec Putty
+
+![puttyconfig](img/puttyconfig.png)
 
