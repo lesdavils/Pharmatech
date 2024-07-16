@@ -291,6 +291,7 @@ Ouvrez les ports nécessaires pour SSH, HTTP, et HTTPS (22, 80, 443) :
 
 ![puttyconfig](img/puttyconfig.png)
 
+<<<<<<< Updated upstream
 Pour ce connecter en SSH a la machine via un PC Windows on utilise PuTTY. 
 
 Pour cela il faut rentrer dans le champ HostName le nom d'hote ou l'ip du serveur. Ensuite le port de base SSH est le 22. Il ne faut pas oublier d'aller dans l'arborescence Connexion/SSH/Auth/Credentials et mettre le fichier converti de la private key.
@@ -345,6 +346,13 @@ sudo systemctl restart apache2
 # Git/Github
 
 ![puttyconfig](img/git_and_github_logo.png)
+=======
+<br>
+<br>
+>>>>>>> Stashed changes
+
+<br>
+<br>
 
 # 16/07/2024
 
@@ -352,4 +360,35 @@ sudo systemctl restart apache2
 
 
 # Introduction
-Ce readme explique comment installer le mysql server sous linux, configurer des users, creation de base de données.
+Ce readme explique comment installer le mysql server sous Ubunto.
+
+```
+sudo apt update
+```
+Cette commande met a jour la liste des paquets.
+
+```
+sudo apt install mysql-server
+```
+
+Ici nous installons MySQL Server 
+
+```
+sudo systemctl start mysql
+```
+Nous démarrons le script 
+
+```
+sudo mysql_secure_installation
+```
+Cette commande est faite pour sécuriser l'installation de mysql il nous demande de définir un mot de passe pour l'user root de MySQL, supprimer les users anonymes, supprimer les bdd de test et recharger les table privileges pour etre sur que toute les modifications ont été effectuer
+
+![anonymous](img/mysql%20anonymous.png)
+![root](img/root.png)
+![bdd](img/db.png)
+![privilege](img/privilege.png)
+
+```
+sudo mysql -u root -p
+```
+Ceci vérifie l'installation, si nous sommes bien connecter en root et que tout fonctionne correctement
