@@ -297,6 +297,11 @@ Pour cela il faut rentrer dans le champ HostName le nom d'hote ou l'ip du serveu
 
 Ensuite on clique sur OPEN et la séssion démarre. 
 
+#### Il est également possible d'utiliser ``Termius`` qui à une interface plus moderne et un acces direct en SFTP pour les fichiers. 
+
+![termius](img/termius_demo.png)
+
+
 ## Installation et Configuration d'Apache
 
 ### Installez Apache :
