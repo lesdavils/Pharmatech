@@ -6,7 +6,7 @@ if (!isset($_SESSION['username'])) {
     exit();
 }
 
-include 'config.php';
+include 'pdo.php';
 
 // Vérifier si l'ID du médicament est passé en paramètre
 if (!isset($_GET['id']) || empty($_GET['id'])) {
@@ -39,9 +39,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Mettre à jour les données dans la base de données
     try {
-        $sql = "UPDATE `medicaments` SET `id`= :id,`reference`= :reference,`prix`= :prix,`quantite`= :quantite,`description`= :description,`fabriquant`= :fabriquant,`type`= :type WHERE id = :id";
+        $sql = "UPDATE medicaments SET reference = :reference, prix = :prix, quantite = :quantite, description = :description, fabriquant = :fabriquant, type = :type WHERE id = :id";
         $stmt = $pdo->prepare($sql);
-        $stmt->execute(['id' => $id, 'reference' => $reference, 'prix' => $prix, 'quantite' => $quantite, 'description' => $description, 'fabriquant' => $fabriquant, 'type' => $type]);
+        $stmt->execute([
+            'id' => $id,
+            'reference' => $reference,
+            'prix' => $prix,
+            'quantite' => $quantite,
+            'description' => $description,
+            'fabriquant' => $fabriquant,
+            'type' => $type
+        ]);
 
         // Rediriger vers la page de détails après la mise à jour
         header("Location: details.php?id=$id");
@@ -72,7 +80,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "Erreur : " . $e->getMessage();
     }
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -82,7 +89,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modifier un médicament</title>
     <style>
-        /* Styles CSS précédemment définis */
         body {
             font-family: Arial, sans-serif;
             margin: 0;

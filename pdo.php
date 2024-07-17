@@ -1,8 +1,8 @@
 <?php
 $host = '127.0.0.1';
 $db   = 'pharmatech';
-$user = 'admin';
-$pass = 'admin';
+$user = 'root'; 
+$pass = 'P@ssword123?'; 
 $charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
@@ -17,3 +17,4 @@ try {
 } catch (\PDOException $e) {
     throw new \PDOException($e->getMessage(), (int)$e->getCode());
 }
+?>

@@ -5,7 +5,7 @@ if (!isset($_SESSION['username'])) {
     header("Location: login.html");
     exit();
 }
-include 'config.php';
+include 'pdo.php';
 
 class Medicament {
     public $id;
@@ -160,12 +160,11 @@ try {
         <p>Fabriquant: <?php echo htmlspecialchars($medicament->fabriquant); ?></p>
         <p>Type: <?php echo htmlspecialchars($medicament->type); ?></p>
 
-        <!-- Boutons -->
+        
         <div class="btn-group">
-            <!-- Bouton Acheter -->
+            
             <a href="#" class="btn btn-buy">Acheter maintenant</a>
             
-            <!-- Bouton Détails -->
             <a href="details.php?id=<?php echo htmlspecialchars($medicament->id); ?>" class="btn btn-details">Détails</a>
         </div>
     </div>

@@ -1,6 +1,6 @@
 <?php
 
-include 'config.php';
+include 'pdo.php';
 
 // Vérifier si l'ID du médicament est passé en paramètre
 if (!isset($_GET['id']) || empty($_GET['id'])) {

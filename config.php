@@ -2,7 +2,7 @@
 $host = 'localhost';  // Adresse du serveur MySQL
 $db = 'pharmatech';   // Nom de la base de données
 $user = 'root';       // Nom d'utilisateur MySQL
-$pass = '';           // Mot de passe MySQL
+$pass = 'P@ssword123?';           // Mot de passe MySQL
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$db", $user, $pass);

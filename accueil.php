@@ -2,11 +2,9 @@
 session_start();
 
 if (!isset($_SESSION['username'])) {
-    header("Location: login.html");
+    header("Location: login.php");
     exit();
 }
-include 'config.php';
-
 ?>
 
 <!DOCTYPE html>
@@ -86,10 +84,6 @@ include 'config.php';
 
 <div class="container">
     <h1>Bienvenue, <?php echo htmlspecialchars($_SESSION['username']); ?>!</h1>
-    <!-- Ajoutez plus de cartes produits selon vos besoins -->
 </div>
 </body>
 </html>
-
-
- 
