@@ -291,7 +291,6 @@ Ouvrez les ports nécessaires pour SSH, HTTP, et HTTPS (22, 80, 443) :
 
 ![puttyconfig](img/puttyconfig.png)
 
-<<<<<<< Updated upstream
 Pour ce connecter en SSH a la machine via un PC Windows on utilise PuTTY. 
 
 Pour cela il faut rentrer dans le champ HostName le nom d'hote ou l'ip du serveur. Ensuite le port de base SSH est le 22. Il ne faut pas oublier d'aller dans l'arborescence Connexion/SSH/Auth/Credentials et mettre le fichier converti de la private key.
@@ -345,17 +344,11 @@ sudo systemctl restart apache2
 
 # Git/Github
 
-<<<<<<< Updated upstream
 ![puttyconfig](img/git_and_github_logo.png)
-=======
-<br>
-<br>
->>>>>>> Stashed changes
 
 <br>
 <br>
-=======
-![git_github_logo](img/git_and_github_logo.png)
+
 
 La principale différence entre ``Git`` et ``GitHub`` est que Git est un outil de contrôle de version gratuit et open source que les développeurs installent localement sur leurs ordinateurs personnels, tandis que GitHub est un service en ligne payant conçu pour exécuter Git dans le cloud . Git est un logiciel. GitHub est un service SaaS en ligne.
 
@@ -382,10 +375,46 @@ git rebase -i HEAD~3
 
 Git rebase va te permettre de réécrire l’historique des commits de ta branche. Le flag -i te permet de le faire de façon interactive. HEAD~3 te permet de le faire sur les trois derniers commits.
 
-### Associer un Clé SSH avec Github pour faire de son ordinateur un PC de confiance.
+### Génerer et associer un Clé SSH avec Github pour faire de son ordinateur un PC de confiance.
 
+   - **Ouvrir GitBash**
 
->>>>>>> Stashed changes
+   - **Tapez cette commande en remplacant l'e-mail d'exemple par votre e-mail github***
+   
+```
+ssh-keygen -t ed25519 -C "your_email@example.com"
+```
+- **Ensuite valider l'emplacement ou les clefs vont s'enregistrer**
+
+- **Ajoutez un mot de passe si necessaire**
+
+- **Lancer l'agent SSH manuellement** 
+<br>
+Tapez cette commande dans powershell en administrateur : 
+```
+# start the ssh-agent in the background
+Get-Service -Name ssh-agent | Set-Service -StartupType Manual
+Start-Service ssh-agent
+```
+
+- **Ajouter la clé privée a l'agent SSH**
+<br>
+Tapez cette commande dans Powershell sans droits administrateur :
+```
+ssh-add c:/Users/YOU/.ssh/id_ed25519
+```
+Remplacez le ``id_ed25519`` par le nom de votre clé. 
+
+- **Ajouter la clé sur Github**
+
+Allez dans les paramètres **Github** et dans la section **SSH and GPG keys**
+
+![git_arch](img/githubsshkeyimg.png)
+
+Appuyez sur **NEW SSH Key** et ensuite copier collez la clé sur github et ajouter un nom pour vos differentes clefs. 
+
+<br>
+<br>
 
 # 16/07/2024
 
