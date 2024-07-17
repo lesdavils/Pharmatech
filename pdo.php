@@ -1,8 +1,8 @@
 <?php
-$host = getenv('host');
-$db   = getenv('db');
-$user = getenv('user'); 
-$pass = getenv('pass'); 
+$host = '127.0.0.1';
+$db   = 'pharmatech';
+$user = 'root'; 
+$pass = 'P@ssword123?'; 
 $charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
