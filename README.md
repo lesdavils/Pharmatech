@@ -345,6 +345,7 @@ sudo systemctl restart apache2
 
 # Git/Github
 
+<<<<<<< Updated upstream
 ![puttyconfig](img/git_and_github_logo.png)
 =======
 <br>
@@ -353,6 +354,38 @@ sudo systemctl restart apache2
 
 <br>
 <br>
+=======
+![git_github_logo](img/git_and_github_logo.png)
+
+La principale différence entre ``Git`` et ``GitHub`` est que Git est un outil de contrôle de version gratuit et open source que les développeurs installent localement sur leurs ordinateurs personnels, tandis que GitHub est un service en ligne payant conçu pour exécuter Git dans le cloud . Git est un logiciel. GitHub est un service SaaS en ligne.
+
+### Voici les principales commandes possible avec git. 
+
+![git_arch](img/Git-Architechture.png)
+
+
+### On trouve trois zones bien distinctes en local sur ton poste de travail.
+
+#### - Zone de travail (Working Directory) : c’est là où ton dépôt git est initialisé et que tes fichiers vivent. C’est dans cette zone que tu touches à tous tes fichiers pendant que tu bosses. Une fois que tu veux versionner une version de ton projet, tu vas alors taper la commande « git add <fichier> » pour passer un fichier à la zone suivante.
+
+#### - Zone de transit (Staging Area) : la zone de transit est un endroit pour désigner les fichiers que tu veux versionner. Tu peux voir la commande « git add » comme une manière de mettre des objets dans un carton. Une fois que tu as désigné tout ce que tu voulais mettre dans ce carton, il sera prêt à être envoyé au dépôt avec la commande « git commit ».
+
+#### - Dépôt local (Local Repository) : la zone de dépôt c’est là que les fameux instantanés de ton projet sont versionnés et stockés. Le truc important à comprendre c’est qu’une référence de version est créée pour chaque commit que tu fais. Chaque commit est donc une version de ton projet unique qui va vivre dans le dépôt et que tu pourras consulter/comparer quand tu voudras !
+
+Et pour le moment on est resté sur ton poste de travail. Une fois que t’as versionné comme tu le voulais tu vas pouvoir partager ton travail en le poussant sur le dépôt remote via un « git push ».
+
+### En plus : 
+
+```
+git rebase -i HEAD~3
+```
+
+Git rebase va te permettre de réécrire l’historique des commits de ta branche. Le flag -i te permet de le faire de façon interactive. HEAD~3 te permet de le faire sur les trois derniers commits.
+
+### Associer un Clé SSH avec Github pour faire de son ordinateur un PC de confiance.
+
+
+>>>>>>> Stashed changes
 
 # 16/07/2024
 
