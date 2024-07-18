@@ -8,7 +8,6 @@ if (!isset($_SESSION['username'])) {
 
 include 'pdo.php';
 
-// Vérifier si le formulaire a été soumis pour ajouter un nouveau produit
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $reference = htmlspecialchars($_POST['reference']);
     $prix = htmlspecialchars($_POST['prix']);
@@ -30,14 +29,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'type' => $type,
             'img' => $img
         ]);
-        // Ajouter une entrée dans les logs
+
         $logSql = "INSERT INTO logs (user, action) VALUES (:user, :action)";
         $logStmt = $pdo->prepare($logSql);
         $logStmt->execute([
             'user' => $_SESSION['username'],
             'action' => "Ajout du médicament $reference"
         ]);
-        // Rediriger vers la page des produits après l'ajout
+
         header("Location: product.php");
         exit();
     } catch (PDOException $e) {
@@ -76,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             background-size: cover;
         }
         .navbar {
-            background-color: rgba(128, 128, 128, 0.3); /* gris avec transparence */
+            background-color: rgba(128, 128, 128, 0.3);
             overflow: hidden;
             padding: 10px 0;
         }

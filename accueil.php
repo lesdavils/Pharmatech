@@ -7,16 +7,9 @@ if (!isset($_SESSION['username'])) {
 }
 include 'pdo.php';
 
-// Récupérer le nombre total de médicaments
 $totalMedicaments = $pdo->query("SELECT COUNT(*) FROM medicaments")->fetchColumn();
-
-// Récupérer le nombre de fabricants distincts
 $totalFabriquants = $pdo->query("SELECT COUNT(DISTINCT fabriquant) FROM medicaments")->fetchColumn();
-
-// Récupérer la valeur totale des médicaments
 $totalValeur = $pdo->query("SELECT SUM(prix * quantite) FROM medicaments")->fetchColumn();
-
-// Récupérer les logs des modifications
 $logs = $pdo->query("SELECT * FROM logs ORDER BY timestamp DESC LIMIT 5")->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
@@ -51,7 +44,7 @@ $logs = $pdo->query("SELECT * FROM logs ORDER BY timestamp DESC LIMIT 5")->fetch
         }
 
         .navbar {
-            background-color: rgba(128, 128, 128, 0.3); /* gris avec transparence */
+            background-color: rgba(128, 128, 128, 0.3);
             overflow: hidden;
             padding: 10px 0;
         }

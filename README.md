@@ -8,7 +8,7 @@ sudo winget install --id ApacheFriends.Xampp.8.2
 Nous n'avons pas fait de configuration spéciale, il faut seulement lancer le serveur ``Apache`` et ``MySQL`` grâce à l'interface ``XAMPP`` : 
 
 
-![Paracetamol](img/xampp.png)
+![XAMMPP](img/xampp.png)
 
  >Cela nous a permis de mettre en place la base de données SQL et le serveur SQL pour pouvoir heberger le site web et avoir un retour sur les modification faites sur le code. 
 <br>
