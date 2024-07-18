@@ -216,7 +216,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <input type="text" id="type" name="type" value="<?php echo htmlspecialchars($type); ?>" required>
             </div>
             <div class="btn-group">
-                <button type="submit" class="btn">Enregistrer les modifications</button>
+                <button class="btn">Enregistrer les modifications</button>
                 <a href="details.php?id=<?php echo $id; ?>" class="btn">Annuler</a>
             </div>
         </form>
