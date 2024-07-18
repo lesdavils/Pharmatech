@@ -172,23 +172,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_id'])) {
             gap: 10px;
         }
 
-        .btn-delete {
-            background-color: rgba(128, 128, 128, 0.5); /* Même couleur de base que les autres boutons */
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-            text-align: center;
-            flex: 1;
-            max-width: 120px; /* Ajouter une largeur maximale pour les boutons */
-            border: none; /* Supprimer la bordure */
-        }
-
-        .btn-delete:hover {
-            background-color: #f44336; /* Couleur rouge au survol */
-        }
-
         /* Assurez-vous que les styles de base pour les boutons sont cohérents */
             .btn {
             background-color: rgba(128, 128, 128, 0.5); /* Couleur de fond de base */
