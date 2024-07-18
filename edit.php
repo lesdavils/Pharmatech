@@ -142,7 +142,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             background-color: rgba(255, 255, 255, 0.3);
             padding: 20px;
             border-radius: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         .form-container h2 {
             margin-bottom: 20px;
@@ -216,7 +215,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <input type="text" id="type" name="type" value="<?php echo htmlspecialchars($type); ?>" required>
             </div>
             <div class="btn-group">
-                <button class="btn">Enregistrer les modifications</button>
+                <button type="submit" class="btn">Enregistrer les modifications</button>
                 <a href="details.php?id=<?php echo $id; ?>" class="btn">Annuler</a>
             </div>
         </form>
