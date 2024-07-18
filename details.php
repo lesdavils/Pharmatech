@@ -1,17 +1,14 @@
 <?php
 include 'pdo.php';
 
-// Vérifier si l'ID du médicament est passé en paramètre
 if (!isset($_GET['id']) || empty($_GET['id'])) {
     echo "ID du médicament non spécifié.";
     exit();
 }
 
-// Récupérer l'ID du médicament depuis $_GET
 $id = $_GET['id'];
 
 try {
-    // Requête SQL pour récupérer les détails du médicament spécifié par l'ID
     $sql = "SELECT * FROM medicaments WHERE id = :id";
     $stmt = $pdo->prepare($sql);
     $stmt->execute(['id' => $id]);
@@ -35,7 +32,6 @@ try {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Détails du médicament</title>
     <style>
-        /* Styles CSS précédemment définis */
         body {
             font-family: 'Marianne', Arial, sans-serif;
             margin: 0;
@@ -59,7 +55,7 @@ try {
             font-style: normal;
         }
         .navbar {
-            background-color: rgba(128, 128, 128, 0.3); /* gris avec transparence */
+            background-color: rgba(128, 128, 128, 0.3);
             overflow: hidden;
             padding: 10px 0;
         }
@@ -81,7 +77,7 @@ try {
         .details-container {
             max-width: 600px;
             margin: 0 auto;
-            background-color: rgba(255, 255, 255, 0.3); /* Fond semi-transparent */
+            background-color: rgba(255, 255, 255, 0.3);
             padding: 20px;
             border-radius: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -144,10 +140,6 @@ try {
             <tr>
                 <th>Prix</th>
                 <td><?php echo htmlspecialchars($medicament['prix']); ?> €</td>
-            </tr>
-            <tr>
-                <th>Dernière modification</th>
-                <td><?php echo htmlspecialchars($medicament['derniere_modification']); ?></td>
             </tr>
             <tr>
                 <th>Quantité</th>

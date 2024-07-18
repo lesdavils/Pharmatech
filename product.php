@@ -225,7 +225,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_id'])) {
             <div>
                 <h2><?php echo htmlspecialchars($medicament->reference); ?></h2>
                 <p>Prix: <?php echo htmlspecialchars($medicament->prix); ?> €</p>
-                <p>Dernière modification: <?php echo htmlspecialchars($medicament->derniere_modification); ?></p>
                 <p>Quantité: <?php echo htmlspecialchars($medicament->quantite); ?></p>
                 <p>Description: <?php echo htmlspecialchars($medicament->description); ?></p>
                 <p>Fabriquant: <?php echo htmlspecialchars($medicament->fabriquant); ?></p>
