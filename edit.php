@@ -95,15 +95,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modifier un médicament</title>
     <style>
+        @font-face {
+        font-family: 'Marianne';
+        src: url('fonts/marianne/Marianne-Regular.woff2') format('woff2'),
+         url('fonts/marianne/Marianne-Regular.woff') format('woff');
+        font-weight: 400;
+        font-style: normal;
+        }
+        @font-face {
+        font-family: 'Marianne';
+        src: url('fonts/marianne/Marianne-Bold.woff2') format('woff2'),
+         url('fonts/marianne/Marianne-Bold.woff') format('woff');
+        font-weight: 700;
+        font-style: normal;
+        }
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Marianne', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background: url('img/background.jpg') no-repeat center center fixed;
+            background-size: cover;
         }
         .navbar {
-            background-color: #4CAF50;
+            background-color: rgba(128, 128, 128, 0.3); /* gris avec transparence */
             overflow: hidden;
+            padding: 10px 0;
         }
         .navbar a {
             float: left;
@@ -150,7 +166,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             text-align: right;
         }
         .btn {
-            background-color: #4CAF50;
+            background-color: rgba(128, 128, 128, 0.5);
             color: white;
             padding: 10px 20px;
             text-decoration: none;
@@ -158,7 +174,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             transition: background-color 0.3s;
         }
         .btn:hover {
-            background-color: #45a049;
+            background-color: rgba(128, 128, 128, 0.9);
         }
     </style>
 </head>
