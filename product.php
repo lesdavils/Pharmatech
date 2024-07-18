@@ -101,6 +101,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_id'])) {
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
+            background: url('img/background.jpg') no-repeat center center fixed;
+            background-size: cover;
         }
 
         .navbar {
