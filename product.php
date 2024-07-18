@@ -223,7 +223,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_id'])) {
 
 <div class="container">
     <h1>Liste des Produits</h1>
-
+    <div style="text-align: right; margin-bottom: 20px;">
+        <a href="create_product.php" class="btn" style="background-color: #008CBA;">Ajouter un produit</a>
+    </div>
     <?php foreach ($medicaments as $medicament): ?>
         <div class="product">
             <img src="<?php echo htmlspecialchars($medicament->img); ?>" alt="Image du médicament">
