@@ -108,7 +108,7 @@ try {
             text-align: right;
         }
         .btn {
-            background-color: #4CAF50;
+            background-color: rgb(119, 181, 254);
             color: white;
             padding: 10px 20px;
             text-decoration: none;
@@ -116,7 +116,7 @@ try {
             transition: background-color 0.3s;
         }
         .btn:hover {
-            background-color: #45a049;
+            background-color: rgba(119, 182, 254, 0.486);
         }
     </style>
 </head>
