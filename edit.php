@@ -8,16 +8,13 @@ if (!isset($_SESSION['username'])) {
 
 include 'pdo.php';
 
-// Vérifier si l'ID du médicament est passé en paramètre
 if (!isset($_GET['id']) || empty($_GET['id'])) {
     echo "ID du médicament non spécifié.";
     exit();
 }
 
-// Récupérer l'ID du médicament depuis $_GET
 $id = $_GET['id'];
 
-// Initialiser les variables pour pré-remplir le formulaire
 $reference = '';
 $prix = '';
 $quantite = '';
@@ -25,19 +22,13 @@ $description = '';
 $fabriquant = '';
 $type = '';
 
-// Vérifier si le formulaire a été soumis pour mettre à jour les données
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Valider et récupérer les données du formulaire
     $reference = htmlspecialchars($_POST['reference']);
     $prix = htmlspecialchars($_POST['prix']);
     $quantite = htmlspecialchars($_POST['quantite']);
     $description = htmlspecialchars($_POST['description']);
     $fabriquant = htmlspecialchars($_POST['fabriquant']);
     $type = htmlspecialchars($_POST['type']);
-
-    // Validation minimale des données (vous pouvez ajouter d'autres validations ici)
-
-    // Mettre à jour les données dans la base de données
     try {
         $sql = "UPDATE medicaments SET reference = :reference, prix = :prix, quantite = :quantite, description = :description, fabriquant = :fabriquant, type = :type WHERE id = :id";
         $stmt = $pdo->prepare($sql);
@@ -50,21 +41,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'fabriquant' => $fabriquant,
             'type' => $type
         ]);
-        // Ajouter une entrée dans les logs
         $logSql = "INSERT INTO logs (user, action) VALUES (:user, :action)";
         $logStmt = $pdo->prepare($logSql);
         $logStmt->execute([
         'user' => $_SESSION['username'],
         'action' => "Modification du médicament ID $id"
     ]);
-        // Rediriger vers la page de détails après la mise à jour
         header("Location: details.php?id=$id");
         exit();
     } catch (PDOException $e) {
         echo "Erreur : " . $e->getMessage();
     }
 } else {
-    // Récupérer les données actuelles du médicament depuis la base de données pour pré-remplir le formulaire
     try {
         $sql = "SELECT * FROM medicaments WHERE id = :id";
         $stmt = $pdo->prepare($sql);
@@ -117,7 +105,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             background-size: cover;
         }
         .navbar {
-            background-color: rgba(128, 128, 128, 0.3); /* gris avec transparence */
+            background-color: rgba(128, 128, 128, 0.3);
             overflow: hidden;
             padding: 10px 0;
         }

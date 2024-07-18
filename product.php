@@ -32,13 +32,9 @@ class Medicament {
 }
 
 try {
-    // Requête SQL pour sélectionner tous les médicaments
     $sql = "SELECT * FROM medicaments";
     $stmt = $pdo->query($sql);
-
-    // Vérifie si des résultats ont été retournés
     if ($stmt->rowCount() > 0) {
-        // Récupère tous les résultats dans un tableau d'objets Medicament
         $medicaments = [];
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             $medicaments[] = new Medicament(
@@ -72,7 +68,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_id'])) {
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -106,7 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_id'])) {
         }
 
         .navbar {
-            background-color: rgba(128, 128, 128, 0.3); /* gris avec transparence */
+            background-color: rgba(128, 128, 128, 0.3); 
             overflow: hidden;
             padding: 10px 0;
         }
@@ -171,10 +166,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_id'])) {
             display: flex;
             gap: 10px;
         }
-
-        /* Assurez-vous que les styles de base pour les boutons sont cohérents */
             .btn {
-            background-color: rgba(128, 128, 128, 0.5); /* Couleur de fond de base */
+            background-color: rgba(128, 128, 128, 0.5);
             color: white;
             padding: 10px 20px;
             text-decoration: none;
@@ -182,12 +175,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_id'])) {
             transition: background-color 0.3s;
             text-align: center;
             flex: 1;
-            max-width: 120px; /* Ajouter une largeur maximale pour les boutons */
-            border: none; /* Supprimer la bordure */
+            max-width: 120px;
+            border: none;
         }
 
         .btn:hover {
-            background-color: rgba(128, 128, 128, 0.9); /* Couleur de survol plus foncée */
+            background-color: rgba(128, 128, 128, 0.9);
         }
 
         @media (max-width: 768px) {
@@ -202,13 +195,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_id'])) {
 
             .btn-group {
                 flex-direction: column;
-                width: 100%; /* Ensure button group takes full width */
+                width: 100%;
             }
 
             .btn {
-                width: 100%; /* Ensure buttons take full width */
-                max-width: none; /* Override max-width for responsive design */
-                margin-bottom: 10px; /* Add margin between buttons */
+                width: 100%;
+                max-width: none;
+                margin-bottom: 10px;
             }
         }
     </style>
