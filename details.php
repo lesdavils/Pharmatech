@@ -1,5 +1,4 @@
 <?php
-
 include 'pdo.php';
 
 // Vérifier si l'ID du médicament est passé en paramètre
@@ -38,10 +37,26 @@ try {
     <style>
         /* Styles CSS précédemment définis */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Marianne', Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
+            background: url('img/background.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+        @font-face {
+            font-family: 'Marianne';
+            src: url('fonts/marianne/Marianne-Regular.woff2') format('woff2'),
+                 url('fonts/marianne/Marianne-Regular.woff') format('woff');
+            font-weight: 400;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Marianne';
+            src: url('fonts/marianne/Marianne-Bold.woff2') format('woff2'),
+                 url('fonts/marianne/Marianne-Bold.woff') format('woff');
+            font-weight: 700;
+            font-style: normal;
         }
         .navbar {
             background-color: #4CAF50;
@@ -65,13 +80,14 @@ try {
         .details-container {
             max-width: 600px;
             margin: 0 auto;
-            background-color: white;
+            background-color: rgba(255, 255, 255, 0.9); /* Fond semi-transparent */
             padding: 20px;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         .details-container h2 {
             margin-bottom: 20px;
+            color: #333;
         }
         .details-table {
             width: 100%;
