@@ -161,7 +161,7 @@ $logs = $pdo->query("SELECT * FROM logs ORDER BY timestamp DESC LIMIT 10")->fetc
 
     <div class="dashboard">
         <div class="card">
-            <h3>Total de médicaments</h3>
+            <h3>Nombres de médicaments</h3>
             <p><?= $totalMedicaments ?></p>
         </div>
         <div class="card">
