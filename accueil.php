@@ -17,7 +17,7 @@ $totalFabriquants = $pdo->query("SELECT COUNT(DISTINCT fabriquant) FROM medicame
 $totalValeur = $pdo->query("SELECT SUM(prix * quantite) FROM medicaments")->fetchColumn();
 
 // Récupérer les logs des modifications
-$logs = $pdo->query("SELECT * FROM logs ORDER BY timestamp DESC LIMIT 10")->fetchAll(PDO::FETCH_ASSOC);
+$logs = $pdo->query("SELECT * FROM logs ORDER BY timestamp DESC LIMIT 5")->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
