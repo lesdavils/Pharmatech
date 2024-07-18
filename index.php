@@ -16,11 +16,11 @@ session_start();
             <img src="img/pharmatech_logo.png" alt="Logo">
         </header>
         <?php if (isset($_SESSION['username'])): ?>
-            <p>Welcome, <?= htmlspecialchars($_SESSION['username']) ?>!</p>
-            <a href="logout.php">Logout</a>
+            <p>Bienvenue, <?= htmlspecialchars($_SESSION['username']) ?>!</p>
+            <a href="logout.php">Déconnexion</a>
         <?php else: ?>
-            <a href="login.php">Login</a>
-            <a href="register.php">Register</a>
+            <a href="login.php">Connexion</a>
+            <a href="register.php">Inscription</a>
         <?php endif; ?>
     </div>
 </body>
