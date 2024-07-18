@@ -173,7 +173,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_id'])) {
         }
 
         .btn {
-            background-color: #4CAF50;
+            background-color: rgba(128, 128, 128, 0.5);
             color: white;
             padding: 10px 20px;
             text-decoration: none;
@@ -185,7 +185,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_id'])) {
         }
 
         .btn:hover {
-            background-color: #45a049;
+            background-color: rgba(128, 128, 128, 0.9);
         }
 
         .btn-delete {
