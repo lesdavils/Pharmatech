@@ -129,6 +129,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             padding: 14px 20px;
             text-decoration: none;
         }
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
         .container {
             padding: 20px;
         }
