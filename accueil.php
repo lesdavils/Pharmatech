@@ -104,7 +104,7 @@ $logs = $pdo->query("SELECT * FROM logs ORDER BY timestamp DESC LIMIT 10")->fetc
         .card p {
             margin: 0;
             font-size: 24px;
-            color: #4CAF50;
+            color: #333;
         }
 
         .logs {
