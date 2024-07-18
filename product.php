@@ -256,7 +256,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_id'])) {
                     <a href="details.php?id=<?php echo htmlspecialchars($medicament->id); ?>" class="btn">Détails</a>
                     <form method="POST" style="display:inline;">
                         <input type="hidden" name="delete_id" value="<?php echo htmlspecialchars($medicament->id); ?>">
-                        <button type="submit" class="btn btn-delete">Supprimer</button>
+                        <button type="submit" class="btn">Supprimer</button>
                     </form>
                 </div>
             </div>
