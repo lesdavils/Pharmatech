@@ -146,7 +146,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_id'])) {
             border-radius: 5px;
             transition: background-color 0.3s;
             text-align: center;
-            flex-grow: 1;
+            flex: 1;
+            max-width: 120px; /* Add max-width for buttons */
         }
         .btn:hover {
             background-color: #45a049;
@@ -167,6 +168,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_id'])) {
             }
             .btn-group {
                 flex-direction: column;
+                width: 100%; /* Ensure button group takes full width */
+            }
+            .btn {
+                width: 100%; /* Ensure buttons take full width */
+                max-width: none; /* Override max-width for responsive design */
+                margin-bottom: 10px; /* Add margin between buttons */
             }
         }
     </style>
@@ -204,5 +211,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_id'])) {
     </div>
     <?php endforeach; ?>
 </div>
+
 </body>
 </html>
