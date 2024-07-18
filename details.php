@@ -59,8 +59,9 @@ try {
             font-style: normal;
         }
         .navbar {
-            background-color: #4CAF50;
+            background-color: rgba(128, 128, 128, 0.3); /* gris avec transparence */
             overflow: hidden;
+            padding: 10px 0;
         }
         .navbar a {
             float: left;
