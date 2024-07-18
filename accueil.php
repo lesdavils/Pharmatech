@@ -17,16 +17,15 @@ $totalFabriquants = $pdo->query("SELECT COUNT(DISTINCT fabriquant) FROM medicame
 $logs = $pdo->query("SELECT * FROM logs ORDER BY timestamp DESC LIMIT 10")->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page d'accueil - Médicaments</title>
+    <title>Dashboard - Médicaments</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
@@ -35,6 +34,7 @@ $logs = $pdo->query("SELECT * FROM logs ORDER BY timestamp DESC LIMIT 10")->fetc
         .navbar {
             background-color: #4CAF50;
             overflow: hidden;
+            padding: 10px 0;
         }
 
         .navbar a {
@@ -55,33 +55,73 @@ $logs = $pdo->query("SELECT * FROM logs ORDER BY timestamp DESC LIMIT 10")->fetc
             padding: 20px;
         }
 
-        .product-card {
+        .dashboard {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .card {
             background-color: white;
-            margin: 20px 0;
+            flex: 1 1 calc(33.333% - 40px);
+            min-width: 250px;
             padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
         }
 
-        .product-card h2 {
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card h3 {
             margin: 0 0 10px;
+            color: #333;
         }
 
-        .product-card p {
-            margin: 0 0 20px;
+        .card p {
+            margin: 0;
+            font-size: 24px;
+            color: #4CAF50;
         }
 
-        .product-card .btn {
-            background-color: #4CAF50;
-            color: white;
+        .logs {
+            margin-top: 40px;
+        }
+
+        .logs h2 {
+            margin-bottom: 20px;
+        }
+
+        .logs ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .logs li {
+            background-color: white;
+            margin-bottom: 10px;
             padding: 10px 20px;
-            text-decoration: none;
             border-radius: 5px;
-            transition: background-color 0.3s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
-        .product-card .btn:hover {
-            background-color: #45a049;
+        .logs li span {
+            font-weight: bold;
+            color: #333;
+        }
+
+        @media (max-width: 768px) {
+            .card {
+                flex: 1 1 calc(50% - 40px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                flex: 1 1 100%;
+            }
         }
     </style>
 </head>
@@ -95,20 +135,29 @@ $logs = $pdo->query("SELECT * FROM logs ORDER BY timestamp DESC LIMIT 10")->fetc
 
 <div class="container">
     <h1>Bienvenue, <?php echo htmlspecialchars($_SESSION['username']); ?>!</h1>
-</div>
-<div class="container">       
-        <h2>Gestion des stocks</h2>
-        <p>Total de médicaments : <?= $totalMedicaments ?></p>
-        <p>Nombre de fabricants différents : <?= $totalFabriquants ?></p>
 
+    <div class="dashboard">
+        <div class="card">
+            <h3>Total de médicaments</h3>
+            <p><?= $totalMedicaments ?></p>
+        </div>
+        <div class="card">
+            <h3>Nombre de fabricants différents</h3>
+            <p><?= $totalFabriquants ?></p>
+        </div>
+    </div>
+
+    <div class="logs">
         <h2>Logs des activités</h2>
         <ul>
             <?php foreach ($logs as $log): ?>
                 <li>
-                    <?= htmlspecialchars($log['timestamp']) ?> - <?= htmlspecialchars($log['user']) ?> : <?= htmlspecialchars($log['action']) ?>
+                    <span><?= htmlspecialchars($log['timestamp']) ?> - <?= htmlspecialchars($log['user']) ?>:</span> <?= htmlspecialchars($log['action']) ?>
                 </li>
             <?php endforeach; ?>
         </ul>
     </div>
+</div>
+
 </body>
 </html>
