@@ -13,6 +13,9 @@ $totalMedicaments = $pdo->query("SELECT COUNT(*) FROM medicaments")->fetchColumn
 // Récupérer le nombre de fabricants distincts
 $totalFabriquants = $pdo->query("SELECT COUNT(DISTINCT fabriquant) FROM medicaments")->fetchColumn();
 
+// Récupérer la valeur totale des médicaments
+$totalValeur = $pdo->query("SELECT SUM(prix * quantite) FROM medicaments")->fetchColumn();
+
 // Récupérer les logs des modifications
 $logs = $pdo->query("SELECT * FROM logs ORDER BY timestamp DESC LIMIT 10")->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -23,7 +26,6 @@ $logs = $pdo->query("SELECT * FROM logs ORDER BY timestamp DESC LIMIT 10")->fetc
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Médicaments</title>
-    
     <style>
     @font-face {
     font-family: 'Marianne';
@@ -165,6 +167,10 @@ $logs = $pdo->query("SELECT * FROM logs ORDER BY timestamp DESC LIMIT 10")->fetc
         <div class="card">
             <h3>Nombre de fabricants différents</h3>
             <p><?= $totalFabriquants ?></p>
+        </div>
+        <div class="card">
+            <h3>Valeur totale des médicaments</h3>
+            <p><?= number_format($totalValeur, 2) ?> €</p>
         </div>
     </div>
 
