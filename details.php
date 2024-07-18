@@ -169,7 +169,7 @@ try {
 
         <div class="btn-group">
             <a href="edit.php?id=<?php echo $id; ?>" class="btn">Modifier</a>
-            <a href="product.php" class="btn" style="background-color: #008CBA;">Retour</a>
+            <a href="product.php" class="btn">Retour</a>
         </div>
     </div>
 </div>
