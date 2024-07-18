@@ -25,20 +25,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Connexion</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h2>Login</h2>
+        <h2>Connexion</h2>
         <form action="login.php" method="POST">
-            <label for="username">Username:</label>
+            <label for="username">Identifiant :</label>
             <input type="text" name="username" required>
-            <label for="password">Password:</label>
+            <label for="password">Mot de passe :</label>
             <input type="password" name="password" required>
-            <button type="submit">Login</button>
+            <button type="submit">Connexion</button>
         </form>
-        <p>Don't have an account? <a href="register.php">Register here</a></p>
+        <p>Vous n'avez pas de compte ? <a href="register.php">Inscrivez-vous</a></p>
     </div>
 </body>
 </html>

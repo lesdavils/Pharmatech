@@ -16,7 +16,7 @@ $totalFabriquants = $pdo->query("SELECT COUNT(DISTINCT fabriquant) FROM medicame
 // Récupérer les logs des modifications
 $logs = $pdo->query("SELECT * FROM logs ORDER BY timestamp DESC LIMIT 10")->fetchAll(PDO::FETCH_ASSOC);
 ?>
-?>
+
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -96,15 +96,7 @@ $logs = $pdo->query("SELECT * FROM logs ORDER BY timestamp DESC LIMIT 10")->fetc
 <div class="container">
     <h1>Bienvenue, <?php echo htmlspecialchars($_SESSION['username']); ?>!</h1>
 </div>
-<div class="container">
-        <?php if (isset($_SESSION['username'])): ?>
-            <p>Welcome, <?= htmlspecialchars($_SESSION['username']) ?>!</p>
-            <a href="logout.php">Logout</a>
-        <?php else: ?>
-            <a href="login.php">Login</a>
-            <a href="register.php">Register</a>
-        <?php endif; ?>
-        
+<div class="container">       
         <h2>Gestion des stocks</h2>
         <p>Total de médicaments : <?= $totalMedicaments ?></p>
         <p>Nombre de fabricants différents : <?= $totalFabriquants ?></p>
