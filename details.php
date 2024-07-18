@@ -83,7 +83,7 @@ try {
             margin: 0 auto;
             background-color: rgba(255, 255, 255, 0.3); /* Fond semi-transparent */
             padding: 20px;
-            border-radius: 5px;
+            border-radius: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         .details-container h2 {
