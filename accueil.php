@@ -28,11 +28,12 @@ $logs = $pdo->query("SELECT * FROM logs ORDER BY timestamp DESC LIMIT 10")->fetc
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background: url('background.jpg') no-repeat center center fixed;
+            background-size: cover;
         }
 
         .navbar {
-            background-color: #4CAF50;
+            background-color: rgba(76, 175, 80, 0.9);
             overflow: hidden;
             padding: 10px 0;
         }
@@ -53,6 +54,10 @@ $logs = $pdo->query("SELECT * FROM logs ORDER BY timestamp DESC LIMIT 10")->fetc
 
         .container {
             padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin: 20px;
         }
 
         .dashboard {
