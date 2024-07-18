@@ -23,9 +23,25 @@ $logs = $pdo->query("SELECT * FROM logs ORDER BY timestamp DESC LIMIT 10")->fetc
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Médicaments</title>
+    
     <style>
+    @font-face {
+    font-family: 'Marianne';
+    src: url('fonts/marianne/Marianne-Regular.woff2') format('woff2'),
+         url('fonts/marianne/Marianne-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    }
+    @font-face {
+    font-family: 'Marianne';
+    src: url('fonts/marianne/Marianne-Bold.woff2') format('woff2'),
+         url('fonts/marianne/Marianne-Bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+    }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Marianne', sans-serif;
             margin: 0;
             padding: 0;
             background: url('img/background.jpg') no-repeat center center fixed;
