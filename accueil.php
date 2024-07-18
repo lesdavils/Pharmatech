@@ -5,6 +5,17 @@ if (!isset($_SESSION['username'])) {
     header("Location: login.php");
     exit();
 }
+include 'pdo.php';
+
+// Récupérer le nombre total de médicaments
+$totalMedicaments = $pdo->query("SELECT COUNT(*) FROM medicaments")->fetchColumn();
+
+// Récupérer le nombre de fabricants distincts
+$totalFabriquants = $pdo->query("SELECT COUNT(DISTINCT fabriquant) FROM medicaments")->fetchColumn();
+
+// Récupérer les logs des modifications
+$logs = $pdo->query("SELECT * FROM logs ORDER BY timestamp DESC LIMIT 10")->fetchAll(PDO::FETCH_ASSOC);
+?>
 ?>
 
 <!DOCTYPE html>
@@ -85,5 +96,27 @@ if (!isset($_SESSION['username'])) {
 <div class="container">
     <h1>Bienvenue, <?php echo htmlspecialchars($_SESSION['username']); ?>!</h1>
 </div>
+<div class="container">
+        <?php if (isset($_SESSION['username'])): ?>
+            <p>Welcome, <?= htmlspecialchars($_SESSION['username']) ?>!</p>
+            <a href="logout.php">Logout</a>
+        <?php else: ?>
+            <a href="login.php">Login</a>
+            <a href="register.php">Register</a>
+        <?php endif; ?>
+        
+        <h2>Gestion des stocks</h2>
+        <p>Total de médicaments : <?= $totalMedicaments ?></p>
+        <p>Nombre de fabricants différents : <?= $totalFabriquants ?></p>
+
+        <h2>Logs des activités</h2>
+        <ul>
+            <?php foreach ($logs as $log): ?>
+                <li>
+                    <?= htmlspecialchars($log['timestamp']) ?> - <?= htmlspecialchars($log['user']) ?> : <?= htmlspecialchars($log['action']) ?>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
 </body>
 </html>

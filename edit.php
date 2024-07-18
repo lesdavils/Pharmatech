@@ -50,7 +50,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'fabriquant' => $fabriquant,
             'type' => $type
         ]);
-
+        // Ajouter une entrée dans les logs
+        $logSql = "INSERT INTO logs (user, action) VALUES (:user, :action)";
+        $logStmt = $pdo->prepare($logSql);
+        $logStmt->execute([
+        'user' => $_SESSION['username'],
+        'action' => "Modification du médicament ID $id"
+    ]);
         // Rediriger vers la page de détails après la mise à jour
         header("Location: details.php?id=$id");
         exit();
