@@ -134,7 +134,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_id'])) {
         }
 
         .product {
-            background-color: white;
+            background-color: rgba(255, 255, 255, 0.5);
             margin: 20px 0;
             padding: 20px;
             border-radius: 10px;
