@@ -59,6 +59,18 @@ try {
 } catch (PDOException $e) {
     echo "Erreur : " . $e->getMessage();
 }
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_id'])) {
+    $deleteId = $_POST['delete_id'];
+    $deleteStmt = $pdo->prepare("DELETE FROM medicaments WHERE id = :id");
+    $deleteStmt->bindParam(':id', $deleteId, PDO::PARAM_INT);
+    if ($deleteStmt->execute()) {
+        header("Location: product.php");
+        exit();
+    } else {
+        echo "Erreur lors de la suppression du médicament.";
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -139,11 +151,11 @@ try {
         .btn:hover {
             background-color: #45a049;
         }
-        .btn-buy {
-            background-color: #008CBA;
+        .btn-delete {
+            background-color: #f44336;
         }
-        .btn-buy:hover {
-            background-color: #007BB5;
+        .btn-delete:hover {
+            background-color: #d32f2f;
         }
         @media (max-width: 768px) {
             .product {
@@ -183,12 +195,14 @@ try {
             <p>Type: <?php echo htmlspecialchars($medicament->type); ?></p>
             <div class="btn-group">
                 <a href="details.php?id=<?php echo htmlspecialchars($medicament->id); ?>" class="btn">Détails</a>
-                <a href="#" class="btn btn-buy">Acheter maintenant</a>
+                <form method="POST" style="display:inline;">
+                    <input type="hidden" name="delete_id" value="<?php echo htmlspecialchars($medicament->id); ?>">
+                    <button type="submit" class="btn btn-delete">Supprimer</button>
+                </form>
             </div>
         </div>
     </div>
     <?php endforeach; ?>
 </div>
-
 </body>
 </html>
