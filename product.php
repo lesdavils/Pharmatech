@@ -80,17 +80,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Liste des Produits</title>
     <style>
+        @font-face {
+            font-family: 'Marianne';
+            src: url('fonts/marianne/Marianne-Regular.woff2') format('woff2'),
+                 url('fonts/marianne/Marianne-Regular.woff') format('woff');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Marianne';
+            src: url('fonts/marianne/Marianne-Bold.woff2') format('woff2'),
+                 url('fonts/marianne/Marianne-Bold.woff') format('woff');
+            font-weight: 700;
+            font-style: normal;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Marianne', sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
         }
+
         .navbar {
-            background-color: #4CAF50;
+            background-color: rgba(128, 128, 128, 0.3); /* gris avec transparence */
             overflow: hidden;
             padding: 10px 0;
         }
+
         .navbar a {
             float: left;
             display: block;
@@ -99,13 +117,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_id'])) {
             padding: 14px 20px;
             text-decoration: none;
         }
+
         .navbar a:hover {
             background-color: #ddd;
             color: black;
         }
+
         .container {
             padding: 20px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin: 20px;
         }
+
         .product {
             background-color: white;
             margin: 20px 0;
@@ -116,28 +141,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_id'])) {
             display: flex;
             align-items: center;
         }
+
         .product:hover {
             transform: translateY(-10px);
         }
+
         .product img {
             max-width: 100px;
             max-height: 100px;
             border-radius: 10px;
             margin-right: 20px;
         }
+
         .product h2 {
             margin: 0 0 10px;
             color: #333;
+            font-weight: 700;
         }
+
         .product p {
-            margin: 0 0 10px;
+            margin: 0;
             color: #666;
         }
+
         .btn-group {
             margin-top: 20px;
             display: flex;
             gap: 10px;
         }
+
         .btn {
             background-color: #4CAF50;
             color: white;
@@ -149,27 +181,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_id'])) {
             flex: 1;
             max-width: 120px; /* Add max-width for buttons */
         }
+
         .btn:hover {
             background-color: #45a049;
         }
+
         .btn-delete {
             background-color: #f44336;
         }
+
         .btn-delete:hover {
             background-color: #d32f2f;
         }
+
         @media (max-width: 768px) {
             .product {
                 flex-direction: column;
                 text-align: center;
             }
+
             .product img {
                 margin-bottom: 10px;
             }
+
             .btn-group {
                 flex-direction: column;
                 width: 100%; /* Ensure button group takes full width */
             }
+
             .btn {
                 width: 100%; /* Ensure buttons take full width */
                 max-width: none; /* Override max-width for responsive design */
@@ -190,25 +229,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_id'])) {
     <h1>Liste des Produits</h1>
 
     <?php foreach ($medicaments as $medicament): ?>
-    <div class="product">
-        <img src="<?php echo htmlspecialchars($medicament->img); ?>" alt="Image du médicament">
-        <div>
-            <h2>Référence: <?php echo htmlspecialchars($medicament->reference); ?></h2>
-            <p>Prix: <?php echo htmlspecialchars($medicament->prix); ?> €</p>
-            <p>Dernière modification: <?php echo htmlspecialchars($medicament->derniere_modification); ?></p>
-            <p>Quantité: <?php echo htmlspecialchars($medicament->quantite); ?></p>
-            <p>Description: <?php echo htmlspecialchars($medicament->description); ?></p>
-            <p>Fabriquant: <?php echo htmlspecialchars($medicament->fabriquant); ?></p>
-            <p>Type: <?php echo htmlspecialchars($medicament->type); ?></p>
-            <div class="btn-group">
-                <a href="details.php?id=<?php echo htmlspecialchars($medicament->id); ?>" class="btn">Détails</a>
-                <form method="POST" style="display:inline;">
-                    <input type="hidden" name="delete_id" value="<?php echo htmlspecialchars($medicament->id); ?>">
-                    <button type="submit" class="btn btn-delete">Supprimer</button>
-                </form>
+        <div class="product">
+            <img src="<?php echo htmlspecialchars($medicament->img); ?>" alt="Image du médicament">
+            <div>
+                <h2>Référence: <?php echo htmlspecialchars($medicament->reference); ?></h2>
+                <p>Prix: <?php echo htmlspecialchars($medicament->prix); ?> €</p>
+                <p>Dernière modification: <?php echo htmlspecialchars($medicament->derniere_modification); ?></p>
+                <p>Quantité: <?php echo htmlspecialchars($medicament->quantite); ?></p>
+                <p>Description: <?php echo htmlspecialchars($medicament->description); ?></p>
+                <p>Fabriquant: <?php echo htmlspecialchars($medicament->fabriquant); ?></p>
+                <p>Type: <?php echo htmlspecialchars($medicament->type); ?></p>
+                <div class="btn-group">
+                    <a href="details.php?id=<?php echo htmlspecialchars($medicament->id); ?>" class="btn">Détails</a>
+                    <form method="POST" style="display:inline;">
+                        <input type="hidden" name="delete_id" value="<?php echo htmlspecialchars($medicament->id); ?>">
+                        <button type="submit" class="btn btn-delete">Supprimer</button>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
     <?php endforeach; ?>
 </div>
 
