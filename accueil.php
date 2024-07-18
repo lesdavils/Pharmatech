@@ -28,7 +28,7 @@ $logs = $pdo->query("SELECT * FROM logs ORDER BY timestamp DESC LIMIT 10")->fetc
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background: url('background.jpg') no-repeat center center fixed;
+            background: url('img/background.jpg') no-repeat center center fixed;
             background-size: cover;
         }
 
