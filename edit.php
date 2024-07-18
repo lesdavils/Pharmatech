@@ -166,7 +166,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             text-align: right;
         }
         .btn {
-            background-color: rgba(128, 128, 128, 0.5);
+            background-color: rgb(119, 181, 254);
             color: white;
             padding: 10px 20px;
             text-decoration: none;
@@ -174,7 +174,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             transition: background-color 0.3s;
         }
         .btn:hover {
-            background-color: rgba(128, 128, 128, 0.9);
+            background-color: rgba(119, 182, 254, 0.486);
         }
     </style>
 </head>
@@ -217,7 +217,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
             <div class="btn-group">
                 <button type="submit" class="btn">Enregistrer les modifications</button>
-                <a href="details.php?id=<?php echo $id; ?>" class="btn" style="background-color: #008CBA;">Annuler</a>
+                <a href="details.php?id=<?php echo $id; ?>" class="btn">Annuler</a>
             </div>
         </form>
     </div>
