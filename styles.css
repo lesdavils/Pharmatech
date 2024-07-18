@@ -30,7 +30,7 @@ body {
     display: inline-block;
     padding: 12px 20px;
     margin: 10px;
-    background-color: #4CAF50;
+    background-color: #4800ffa2;
     color: white;
     text-decoration: none;
     border-radius: 5px;
@@ -38,11 +38,11 @@ body {
 }
 
 .container a:hover {
-    background-color: #45a049;
+    background-color: #4800ff45;
 }
 
 h2 {
-    color: #4CAF50;
+    color: #4800ffa2;
     margin-bottom: 20px;
 }
 
@@ -64,7 +64,7 @@ input[type="email"] {
 }
 
 button {
-    background-color: #4CAF50;
+    background-color: #4800ffa2;
     color: white;
     padding: 10px 15px;
     border: none;
@@ -74,11 +74,11 @@ button {
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #4800ff45;
 }
 
 a {
-    color: #4CAF50;
+    color: #ffffff;
     text-decoration: none;
 }
 
