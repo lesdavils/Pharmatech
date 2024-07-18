@@ -33,7 +33,7 @@ $logs = $pdo->query("SELECT * FROM logs ORDER BY timestamp DESC LIMIT 10")->fetc
         }
 
         .navbar {
-            background-color: rgba(128, 128, 128, 0.5); /* gris avec transparence */
+            background-color: rgba(128, 128, 128, 0.3); /* gris avec transparence */
             overflow: hidden;
             padding: 10px 0;
         }
